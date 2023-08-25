@@ -23,25 +23,29 @@ function generatePassword () {
   else { 
     alert(" you want "  + length +  " characters password");
   }
+  /* made it that the user get asked if they want lowercase, uppercase, numbers, and special characters the user can answer with okay or cancel */ 
   var wantLowerCase = confirm("You want to include lowercase letters?");
   var wantUpperCase = confirm("You want to include uppercase letters?");
   var wantNumbers = confirm("You want to include numbers?");
   var wantSpecialCharacters = confirm("You want to include special characters?");
-
+  
+  /* if the user choose none they will git an alert to choose at least one.*/
   if ( !wantLowerCase && !wantUpperCase && !wantNumbers && !wantSpecialCharacters) {
     alert("Please choose at least one!");
     return;
+
+  /*made an object to that has lowercase, uppercase, numbers, and special characters if the user responded with okay for any of the confirm questions to add to the charaters object. */   
 } 
 var characters = "";
-  if (wantLowerCase ) characters +=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  if (wantUpperCase ) characters +=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  if (wantNumbers ) characters +=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  if (wantSpecialCharacters) characters +=['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+'];
-
+   if (wantLowerCase ) characters +='abcdefghijklmnopqrstuvwxyz';
+  if (wantUpperCase ) characters +='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if (wantNumbers ) characters +='0123456789';
+  if (wantSpecialCharacters) characters +='`~!@#$%^&*()-_=+[]{};:,.<>|/?';
+    /* for the length of the password that the user chose randomly select characters from the characters object. */
   var result = "";
-    for (var i = 0; i < characters.length; i++) {
+    for (var i = 0; i < length; i++) {
       var index = Math.floor(Math.random() * characters.length);
-      result = characters[index];
+      result += characters[index];
     } 
     return result; 
   };
